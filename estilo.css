@@ -1,0 +1,52 @@
+* { /* Tirando as definições padrões do site */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    /*scrollbar-arrow-color: ;*/ 
+}
+
+body {
+    background-color: white;
+}
+
+nav {
+    background-color: #F1AA4D;
+    height: 80px;
+}
+
+nav img {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 100px;
+    height: 50px;
+}
+
+nav li a {
+    background-color: #FDE993;
+    border: 1px solid black;
+    border-radius: 80px;
+    width: 190px;
+    margin-top: 8px;
+    margin-left: 20px;
+    color: black;
+    text-align: center;
+}
+
+nav li a:hover {
+    background-color: rgb(165, 77, 42);
+}
+
+#aba-adm {
+    margin-right: 15px; 
+    margin-left: 90px;
+}
+
+.base {
+    background-color: #FDE993;
+    width: 80%;
+    margin-top: 1.8rem;
+    margin-left: 5%;
+    margin-right: 5%;
+    justify-content: center;
+}
