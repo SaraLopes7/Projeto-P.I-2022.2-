@@ -11,6 +11,7 @@ font-family: 'Roboto Condensed', sans-serif;
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
+    font-family: 'Roboto Condensed', sans-serif;
     /*scrollbar-arrow-color: ;*/ 
 }
 
@@ -20,24 +21,22 @@ body {
 
 nav {
     background-color: #F1AA4D;
-    height: 90px;
+    height: 60px;
     display: flex;
-    justify-content: space-between;
-    font-family: 'Roboto Condensed', sans-serif;                      
+    justify-content: space-between;                   
 }
 
-nav img {
-    width: 100px;
-    height: 70px;
-    margin-top: 10px;
+nav h2 {
+    margin-top: 15px;
     margin-left: 10px;
+    color: white;
 }
 
 nav ul {
     display: flex;
     flex-direction: row;
     list-style: none;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-right: 40px;
 }
 
@@ -63,11 +62,256 @@ nav li a {
     color: black;
 }
 
-.base {
+/* Linhas */
+
+.linhas {
+    display: flex;
+    flex-direction: column;
+}
+
+.linhas h3 {
+    margin-left: 80px;
+    margin-top: 20px;
+}
+
+/* Linha 1 */
+
+#linha1 {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    margin-left: 80px;
+}
+
+#imagem1 {
+    width: 562px;
+    height: 192px;
+}
+
+#texto1 {
+    width: 562px;
+    height: 198px;
+    margin-left: 40px;
     background-color: #FDE993;
-    width: 80%;
-    margin-top: 1.8rem;
-    margin-left: 10%;
-    margin-right: 10%;
-    justify-content: center;
+    padding: 20px;
+}
+
+/* Linha 2 */
+
+#linha2 {
+    display: flex;
+    flex-direction: row;
+    margin-left: 80px;
+    margin-top: 15px;
+    color: white;
+}
+
+#linha2 h2 {
+    text-align: center;
+}
+
+#texto2 {
+    width: 362px;
+    height: 198px;
+    background-color: #C5833A;
+    padding: 5px;
+}
+
+#texto3 {
+    width: 362px;
+    height: 198px;
+    margin-left: 40px;
+    background-color: #C5833A;
+    padding: 15px;
+}
+
+#texto4 {
+    width: 362px;
+    height: 198px;
+    margin-left: 40px;
+    background-color: #C5833A;
+    padding: 3px;
+}
+
+/* Linha 3 */
+
+#linha3 {
+    display: flex;
+    flex-direction: row;
+    margin-left: 80px;
+    margin-top: 15px;
+    color: black;
+}
+
+#imagem2 {
+    width: 362px;
+    height: 192px;
+}
+
+#texto5 {
+    width: 762px;
+    height: 198px;
+    margin-left: 40px;
+    background-color: #F8BE5A;
+    padding: 20px;
+}
+
+/* Linha 4 */
+
+#linha4 {
+    display: flex;
+    flex-direction: row;
+    margin-left: 80px;
+    margin-top: 15px;
+    color: black;
+}
+
+#imagem3 {
+    width: 472px;
+    height: 192px;
+}
+
+#texto6 {
+    width: 662px;
+    height: 198px;
+    margin-right: 30px;
+    background-color: #F8BE5A;
+    padding: 20px;
+}
+
+/* Linha 5 */
+
+#linha5 {
+    display: flex;
+    flex-direction: row;
+    margin-left: 80px;
+    margin-top: 15px;
+    color: black;
+}
+
+#imagem4 {
+    width: 465px;
+    height: 315px;
+}
+
+#texto7 {
+    width: 320px;
+    height: 315px;
+    margin-right: 30px;
+    background-color: #F8BE5A;
+    padding: 20px;
+}
+
+#texto8 {
+    width: 320px;
+    height: 315px;
+    margin-left: 30px;
+    background-color: #F8BE5A;
+    padding: 20px;
+}
+
+/* Linha 6 */
+
+#linha6 {
+    display: flex;
+    flex-direction: row;
+    margin-left: 80px;
+    margin-top: 15px;
+    color: black;
+}
+
+#texto9 {
+    width: 1165px;
+    height: 480px;
+    background-color: #FDE993;
+    padding: 15px;
+}
+
+#texto9 iframe {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    width: 90%;
+    height: 410px;
+}
+
+/* Login */
+
+.login ul {
+    margin-left: 570px;
+    font-size: 1.7em;
+}
+
+.login ul a {
+    color: black;
+}
+
+#login-usuario form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 450px;
+}
+
+.campos {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.campos label {
+    margin-right: 10px;
+    padding-top: 9px;
+}
+
+#login-usuario input {
+    width: 400px;
+    height: 35px;
+    padding-left: 5px;
+    background-color: #FDE993;
+    border: 0px;
+}
+
+input::placeholder {
+    color: #985B26;
+}
+
+#login-usuario button {
+    width: 130px;
+    height: 40px;
+    background-color: #C5833A;
+    color: white;
+    border: 0px;
+    text-align: center;
+    margin-left: 180px;
+}
+
+/* Cadastro */
+
+#cadastro-usuario form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 450px;
+}
+
+#cadastro-usuario input {
+    min-width: 300px;
+    max-width: 400px;
+    height: 35px;
+    padding-left: 5px;
+    background-color: #FDE993;
+    border: 0px;
+}
+
+input::placeholder {
+    color: #985B26;
+}
+
+#cadastro-usuario button {
+    width: 130px;
+    height: 40px;
+    background-color: #C5833A;
+    color: white;
+    border: 0px;
+    text-align: center;
+    margin-left: 180px;
 }
