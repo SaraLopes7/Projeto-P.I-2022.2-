@@ -1,0 +1,41 @@
+
+.logo-pix {
+    width: 300px;
+    margin-left: 40%;
+}
+
+.qr-code {
+    width: 200px;
+    margin-left: 38%;
+    margin-top: 3%;
+}
+
+.pague {
+    margin-left: 52%;
+    margin-top: -14.5%;
+}
+
+ul.pague-pix {
+    margin-left: 54%;
+}
+
+#chave {
+    margin-left: 53%;
+    margin-top: 1%;
+}
+
+.chave-pix {
+    width: 170px;
+    background-color: #F1AA4D;
+    height: 30px;
+    border-radius: 20px;
+    margin-left: 52.4%;
+    margin-top: 1%;
+}
+
+#numero-chave {
+    padding: 3%;
+    text-align: center;
+}
+
+

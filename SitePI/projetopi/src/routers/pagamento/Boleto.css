@@ -1,0 +1,35 @@
+
+#boleto p {
+    margin-left: 41%;
+    font-size: 22px;
+    margin-top: 1%;
+}
+
+img.pdf  {
+    width: 30px;
+    margin-left: 45%;
+    margin-top: 1%;
+}
+
+#boletopdf p {
+    margin-left: 47%;
+    margin-top: -2%;
+    text-decoration: underline;
+}
+
+#baixar {
+    width: 60px;
+    height: 30px;
+    background-color: #C5833A;
+    color: white;
+    border: 0px;
+    text-align: center;
+    margin-left: 49%;
+    border-radius: 20px;
+    margin-top: 1%;
+}
+
+.barras {
+    margin-left: 28%;
+    margin-top: 1%;
+}

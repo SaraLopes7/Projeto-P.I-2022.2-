@@ -1,0 +1,57 @@
+.footer {
+    background-color: #FAD477;
+    min-height: 100%;
+    display: flex;
+    position: relative;
+    width: 100%;
+}
+
+footer {
+    margin-top: 3%;
+    width: 100%;
+    bottom: 0;
+}
+
+.logo {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    padding: 15px;
+}
+
+.footer li {
+    list-style: none;
+}
+
+.contato {
+    padding-top: 0.5%;
+    padding-left: 2%;
+}
+
+.icones img {
+    width: 30px;
+}
+
+.icones {
+    display: flex;
+    padding-top: 2%;
+    margin-left: -4%;
+}
+
+.icones li {
+    margin-right: 10%;
+}
+
+.endereco {
+    padding-top: 4.5%;
+    margin-left: -7.8%;
+}
+
+.outros {
+    padding-top: 0.5%;
+    padding-left: 10%;
+}
+
+.outros li {
+    margin-bottom: 5%;
+}

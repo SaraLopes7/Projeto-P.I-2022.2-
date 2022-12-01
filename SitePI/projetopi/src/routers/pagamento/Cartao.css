@@ -1,0 +1,80 @@
+
+.cartao {
+    padding-top: 1%;
+    padding-bottom: 2%;
+}
+
+.cartao form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 450px;
+}
+
+.cartao input {
+    width: 500px;
+    height: 35px;
+    padding-left: 5px;
+    background-color: #FDE993;
+    border: 0px;
+}
+
+input::placeholder {
+    color: #985B26;
+}
+
+h3 {
+    margin-left: 47%;
+    padding: 1%;
+}
+
+.inputCartao1 {
+    margin-left: 0.4%;
+}
+
+.inputCartao2 {
+    margin-left: 1.5%;
+}
+
+.inputCartao3 {
+    margin-left: 8.8%;
+}
+
+.inputCartao4 {
+    margin-left: 1.8%;
+}
+
+.inputEndereco1 {
+    margin-left: 9.1%;
+}
+
+.inputEndereco2 {
+    margin-left: 7.5%;
+}
+
+.inputEndereco3 {
+    margin-left: 7.4%;
+}
+
+.inputEndereco4 {
+    margin-left: 4%;
+}
+
+.inputEndereco5 {
+    margin-left: 7%;
+}
+
+.inputEndereco6 {
+    margin-left: 3.4%;
+}
+
+.cartao button#botao-doar {
+    width: 130px;
+    height: 40px;
+    background-color: #C5833A;
+    color: white;
+    border: 0px;
+    text-align: center;
+    margin-left: 49%;
+    border-radius: 20px;
+    margin-top: 1%;
+}
