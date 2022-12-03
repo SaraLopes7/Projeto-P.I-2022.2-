@@ -18,3 +18,8 @@ class User():
 
     def validarSenha(self, SenhaUsuario):
         return cripto.verify(SenhaUsuario, self.Senha)
+    
+    def adicionarBanco(self):
+        Values = (self.CPF, self.Nome, self.Sobrenome, self.Email, self.Telefone, self.Senha)
+        db.mycursor.execute("INSERT INTO Usuarios VALUES (%s, %s, %s, %s, %s, %s, NULL)", Values)
+        db.db.commit()
