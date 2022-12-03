@@ -112,14 +112,14 @@
             <div class="tab-content">
                 <div id="login" class="tab-pane fade in active">
                     <div id="login-usuario">
-                        <form action="">
+                        <form action="" method="post">
                             <div class="campos">
-                                <label for="">Email: </label>
-                                <input type="email" placeholder="ex: meunome@email.com">
+                                <label for="email">Email: </label>
+                                <input type="email" name="email" placeholder="ex: meunome@email.com">
                             </div>
                             <div class="campos">
-                                <label for="">Senha: </label>
-                                <input type="password" placeholder="Minímo: 8 caracteres">
+                                <label for="senha">Senha: </label>
+                                <input type="password" name="senha" placeholder="Minímo: 8 caracteres">
                             </div>
                             <button type="submit">Login</button>
                         </form>
@@ -127,30 +127,34 @@
                 </div>
                 <div id="cadastro" class="tab-pane fade">
                     <div id="cadastro-usuario">
-                        <form action="">
+                        <form action="" method="post">
                             <div class="campos">
-                                <label for="">Nome Completo: </label>
-                                <input type="text" placeholder="Nome Completo" required>
+                                <label for="">Nome: </label>
+                                <input type="text" name="nome" placeholder="Nome" required>
+                            </div>
+                            <div class="campos">
+                                <label for="">Sobrenomes: </label>
+                                <input type="text" name="sobrenome" placeholder="Sobrenomes" required>
                             </div>
                             <div class="campos">
                                 <label for="">Email: </label>
-                                <input type="email" placeholder="ex: meunome@email.com" autocomplete="email" required>
+                                <input type="email" name="email" placeholder="ex: meunome@email.com" autocomplete="email" required>
                             </div>
                             <div class="campos">
                                 <label for="">CPF: </label>
-                                <input type="number" placeholder="XXX.XXX.XXX–XX" required>
+                                <input type="text" name="CPF" placeholder="XXX.XXX.XXX–XX" required>
                             </div>
                             <div class="campos">
                                 <label for="">Telefone: </label>
-                                <input type="number" placeholder="(XX) XXXXX-XXXX">
+                                <input type="tel" name="telefone" placeholder="(XX)XXXXX-XXXX">
                             </div>
                             <div class="campos">
                                 <label for="">Senha: </label>
-                                <input type="password" placeholder="Minímo: 8 caracteres" required>
+                                <input type="password" name="senha" placeholder="Minímo: 8 caracteres" required>
                             </div>
                             <div class="campos">
                                 <label for="">Confirmar Senha: </label>
-                                <input type="password" placeholder="Minímo: 8 caracteres" required>
+                                <input type="password" name="senha" placeholder="Minímo: 8 caracteres" required>
                             </div>
                             <button type="submit">Cadastro</button>
                         </form>
