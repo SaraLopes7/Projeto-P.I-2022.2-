@@ -17,10 +17,13 @@ def cadastro():
         Email = request.form['Email']
         Telefone = request.form['Telefone']
         Senha = request.form['Senha']
-        Usuario = User(CPF, Nome, Sobrenome, Email, Telefone, Senha)
-        Usuario.adicionarBanco()
-
-        return redirect(url_for('login'))
+        ConfirmacaoSenha = request.form['ConfirmacaoSenha']
+        if Senha == ConfirmacaoSenha:
+            Usuario = User(CPF, Nome, Sobrenome, Email, Telefone, Senha)
+            Usuario.adicionarBanco()
+            return redirect(url_for('login'))
+        else:
+            return "As senhas não se coincidem"
 
     return render_template("teste.html")
 
