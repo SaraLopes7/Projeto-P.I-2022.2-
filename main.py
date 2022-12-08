@@ -12,22 +12,27 @@ def home():
 def cadastro():
     if request.method == "POST":
         CPF = request.form['CPF']
-        Nome = request.form['Nome']
-        Sobrenome = request.form['Sobrenome']
-        Email = request.form['Email']
+        Nome = request.form['Nome'].upper()
+        Sobrenome = request.form['Sobrenome'].upper()
+        Email = request.form['Email'].upper()
         Telefone = request.form['Telefone']
         Senha = request.form['Senha']
-        Usuario = User(CPF, Nome, Sobrenome, Email, Telefone, Senha)
-        Usuario.adicionarBanco()
+        ConfirmacaoSenha = request.form['ConfirmacaoSenha']
 
-        return redirect(url_for('login'))
+        if Senha == ConfirmacaoSenha:
+            Usuario = User(CPF, Nome, Sobrenome, Email, Telefone, Senha)
+            Usuario.adicionarBanco()
+            #retorna para a rota de login (página de login)
+            return redirect(url_for('login'))
+        else:
+            return "As senhas não se coincidem (tratar no frontend)"
 
     return render_template("teste.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        Email = request.form['EmailLogin']
+        Email = request.form['EmailLogin'].upper()
         Senha = request.form['SenhaLogin']
 
         if not User.verificarEmail(Email) or not User.validarSenha(Email, Senha):
@@ -39,6 +44,7 @@ def login():
             return redirect(url_for('home'))
 
     return render_template("testeLogin.html")
+
 
 @app.route("/logout")
 def logout():
