@@ -1,6 +1,7 @@
 from app import app
-from app.models import User
-from flask_login import login_user, logout_user
+import json
+from app.models import User, CartaoDeCredito
+from flask_login import login_user, logout_user, current_user
 from flask import render_template, request, redirect, url_for, flash
 
 
@@ -44,6 +45,28 @@ def login():
             return redirect(url_for('home'))
 
     return render_template("testeLogin.html")
+
+
+@app.route("/doarCartao", methods=["GET", "POST"])
+def doacao():
+    Usuario = User(current_user[0][0], current_user[0][1], current_user[0][2], current_user[0][3], current_user[0][4], current_user[0][5])
+    if request.method == "POST":
+        Numero = request.form["NumeroCartao"]
+        DataVencimento = request.form["DataValidade"]
+        CVV = request.form["CVV"]
+        NomeTitular = request.form["TitularCartao"]
+        ValorContribuicao = request.form["ValorContribuicao"]
+        SalvarCartao = request.form.get("SalvarCartao")
+        Cartao = CartaoDeCredito(Numero, CVV, DataVencimento, NomeTitular)
+
+        Usuario.realizarDoacao(ValorContribuicao, "Cartao")
+
+        if SalvarCartao:
+            Cartao.salvarCartao()
+            Cartao.adicionarUsuarios_cartaodecredito(Usuario.CPF)
+            return "CARTAO SALVO"
+
+    return render_template("doacaoCARTAO.html")
 
 
 @app.route("/logout")
