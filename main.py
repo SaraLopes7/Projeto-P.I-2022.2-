@@ -68,7 +68,7 @@ def doacao():
 
     return render_template("doacaoCARTAO.html")
 
-
+# endpoint para deslogar o usuário (ao acessar ele é deslogado (logout_user()) e redirecionado para a rota de login)
 @app.route("/logout")
 def logout():
     logout_user()
