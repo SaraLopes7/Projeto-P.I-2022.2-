@@ -29,12 +29,19 @@ class User(UserMixin):
     def get_id(self):
         return (self.CPF)
     
-    
     def adicionarBanco(self):
         Values = (self.CPF, self.Nome, self.Sobrenome, self.Email, self.Telefone, self.Senha)
         db.mycursor.execute("INSERT INTO usuarios VALUES (%s, %s, %s, %s, %s, %s, NULL)", Values)
         db.db.commit()
     
+    def realizarDoacao(self, Valor, Tipo, Parcelas = 0):
+        ValuesPagamentos = (Valor, Tipo, Parcelas)
+        db.mycursor.execute("INSERT INTO doacoes (Usuarios_CPF) VALUES (%s)", [self.CPF])
+        db.db.commit()
+        db.mycursor.execute("INSERT INTO pagamentos (Doacoes_ID, Valor, Tipo, Parcelas) VALUES (LAST_INSERT_ID(), %s, %s, %s)", ValuesPagamentos)
+        db.db.commit()
+  
+
     def __buscarSenhaPorEmail(Email):
         db.mycursor.execute("SELECT Senha FROM usuarios WHERE Email = %s", [Email])
         Resultado = db.mycursor.fetchall()
@@ -47,6 +54,11 @@ class User(UserMixin):
         db.mycursor.execute("SELECT * FROM usuarios WHERE Email = %s", [EmailUsuario])
         return db.mycursor.fetchone()
 
+    @staticmethod
+    def buscarUsuarioPorCPF(CPFUsuario):
+        db.mycursor.execute("SELECT * FROM usuarios WHERE CPF = %s", [CPFUsuario])
+        return db.mycursor.fetchone()
+
 
     @staticmethod
     def validarSenha(EmailUsuario, SenhaUsuario):
@@ -57,3 +69,23 @@ class User(UserMixin):
         db.mycursor.execute("SELECT Email FROM usuarios WHERE Email = %s", [EmailUsuario])
         Resultado = db.mycursor.fetchall()
         return True if Resultado else False
+
+
+class CartaoDeCredito():
+    def __init__(self, Numero, CVV, DataVencimento, NomeTitular):
+        self.Numero = Numero
+        self.CVV = CVV
+        self.DataVencimento = DataVencimento
+        self.NomeTitular = NomeTitular
+    
+    # funcao para salvar o cartao no banco de dados (só deve ser chamada se o usuário aceitar a checkbox para salvar os dados)
+    def salvarCartao(self):
+        Values = (self.Numero, self.CVV, f"{self.DataVencimento}-00", self.NomeTitular)
+        db.mycursor.execute("INSERT INTO cartaodecredito VALUES (%s, %s, %s, %s,NULL, NULL)", Values)
+        db.db.commit()
+    
+    # inserindo na tabela relacionamento entre cartao de credito e usuarios
+    def adicionarUsuarios_cartaodecredito(self, UsuarioCPF):
+        Values = (UsuarioCPF, self.Numero)
+        db.mycursor.execute("INSERT INTO usuarios_cartaodecredito VALUES (%s, %s)", Values)
+        db.db.commit()
