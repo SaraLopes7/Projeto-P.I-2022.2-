@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=chrome">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/Principal/cadastro.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/Header/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/Footer/footer.css') }}">
+    <title>Cadastro</title>
+</head>
+<body>
+    <nav>
+        <h2>Paróquia da Torre</h2>
+        <ul>
+            <li><a href="{{ url_for('index')}}">Sobre Nós</a></li>
+            <li><a href="">Visite-Nos</a></li>
+            <li><a href="">F.A.Q</a></li>
+            <li><a href="{{ url_for('contribuir') }}">Contribuir</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('login')}}">Olá, {{current_user[0][1]}}</a></li>
+            {% else %}
+                <li><a href="{{ url_for('login')}}">Entre aqui</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <div id="cadastro-usuario">
+        <img class='logo-cadastro'
+            src='https://www.altoastral.com.br/media/uploads/legacy/2016/07/AAT001-P001-89335-1-m-Divulgacao_1.jpg'
+            alt='Logo da Paróquia'></img>
+            <form method="post">
+                <div class="campos">
+                    <label for="Nome" class="nomeLabel">Nome: </label>
+                    <input class='input1' name="Nome"  type="text" placeholder="Nome" required></input>
+                </div>
+                <div class="campos">
+                    <label for="Sobrenome" class="nomeLabel">Sobrenome(s): </label>
+                    <input class='input1' name="Sobrenome" type="text" placeholder="Sobrenome(s)" required></input>
+                </div>
+                <div class="campos">
+                    <label for="Email" class="nomeLabel">Email: </label>
+                    <input class='input2' name="Email" type="email" placeholder="ex: meunome@email.com" autocomplete="email" required></input>
+                </div>
+                <div class="campos">
+                    <label for="CPF" class="nomeLabel">CPF: </label>
+                    <input class='input3' name="CPF" type="text" minlength="11"  maxlength="14"
+                    placeholder="XXX.XXX.XXX–XX" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required></input>
+                </div>
+                <div class="campos">
+                    <label for="Telefone" class="nomeLabel">Telefone: </label>
+                    <input class='input4' name="Telefone" type="tel" pattern="(\d{2}\)[0-9]{2}[9]{1}[0-9]{4}-[0-9]{4}" placeholder="(XX) XXXXX-XXXX"></input>
+                </div>
+                <div class="campos">
+                    <label for="Senha" class="nomeLabel">Senha: </label>
+                    <input class='input5' name="Senha" type="password" minlength="8" placeholder="Minímo: 8 caracteres" required></input>
+                </div>
+                <div class="campos">
+                    <label for="ConfirmacaoSenha" class="nomeLabel">Confirmar Senha: </label>
+                    <input type="password" name="ConfirmacaoSenha" minlength="8" placeholder="Minímo: 8 caracteres" required></input>
+                </div>
+                <div id="botoes">
+                    <button id='botao-login' type="button"><a href="{{url_for('login')}}">Já possuo cadastro</a></button>
+                    <button id='botao-cadastrar' type="submit">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+
+        <footer class='footer'> <!-- Footer -->
+            <img class='logo'
+                src='https://www.altoastral.com.br/media/uploads/legacy/2016/07/AAT001-P001-89335-1-m-Divulgacao_1.jpg'
+                alt='Logo da Paróquia'></img>
+            <p class='contato'>CONTATO</p>
+            <ul class='icones'>
+                <li><a href=' '><img class='' src='https://cdn-icons-png.flaticon.com/512/2175/2175193.png' alt=''></img></a>
+                </li>
+                <li><a href='https://www.instagram.com/paroquiadatorre/'><img class=''
+                            src='https://cdn-icons-png.flaticon.com/512/3670/3670274.png' alt=''></img></a></li>
+                <li><a href=' '><img class='' src='https://cdn-icons-png.flaticon.com/512/733/733641.png' alt=''></img></a></li>
+                <li><a href=' '><img class='' src='https://cdn-icons-png.flaticon.com/512/1384/1384028.png' alt=''></img></a>
+                </li>
+            </ul>
+            <p class='endereco'>Rua Conde de Irajá, S/n, Torre, Recife - PE</p>
+            <ul class='outros'>
+                <li>FAC</li>
+                <li>Termos e Condições</li>
+                <li>Políticas de Privacidade</li>
+            </ul>
+        </footer>
+</body>
+</html>

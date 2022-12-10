@@ -10,6 +10,7 @@ cripto = CryptContext(
 
 
 @login_manager.user_loader
+
 def get_user(CPF):
     db.mycursor.execute("SELECT * FROM Usuarios WHERE CPF = %s", [CPF])
     return db.mycursor.fetchall()
@@ -28,6 +29,9 @@ class User(UserMixin):
     # para definir que o atributo "id" seria o "CPF"
     def get_id(self):
         return (self.CPF)
+    
+    def is_authenticated(self):
+        return self._authenticated
     
     def adicionarBanco(self):
         Values = (self.CPF, self.Nome, self.Sobrenome, self.Email, self.Telefone, self.Senha)

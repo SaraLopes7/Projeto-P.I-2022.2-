@@ -4,21 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=chrome">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="pix.css">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../Header/header.css">
-    <link rel="stylesheet" href="../Footer/footer.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/Pagamentos/pix.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/Header/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/Footer/footer.css') }}">
     <title>Pagamento Pix</title>
 </head>
 <body>
     <nav>
         <h2>Paróquia da Torre</h2>
         <ul>
-            <li><a href="../index.html">Sobre Nós</a></li>
-            <li><a href="../index.html">Visite-Nos</a></li>
-            <li><a href="../index.html">F.A.Q</a></li>
-            <li><a href="#">Contribuir</a></li>
-            <li><a href="../Principal/login.html">Olá, Usuário</a></li>
+            <li><a href="{{ url_for('index') }}">Sobre Nós</a></li>
+            <li><a href="{{ url_for('index') }}">Visite-Nos</a></li>
+            <li><a href="{{ url_for('index') }}">F.A.Q</a></li>
+            <li><a href="{{ url_for('contribuir') }}">Contribuir</a></li>
+            {% if current_user[0] %}
+            <li><a>Olá, {{current_user[0][1]}}</a></li>
+            <li><a href="{{ url_for('logout')}}">Sair</a></li>
+            {% else %}
+            <li><a href="{{ url_for('login')}}">Entre aqui</a></li>
+            {%endif%}
         </ul>
     </nav>
 

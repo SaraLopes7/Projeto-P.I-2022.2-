@@ -4,38 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=chrome">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
-    <link rel="stylesheet" href="body.css">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../Header/header.css">
-    <link rel="stylesheet" href="../Footer/footer.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/Principal/login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/Principal/body.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/Header/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/Footer/footer.css') }}">
     <title>Pagamento Cartão</title>
 </head>
 <body>
     <nav>
         <h2>Paróquia da Torre</h2>
         <ul>
-            <li><a href="#">Sobre Nós</a></li>
+            <li><a href="{{ url_for('index')}}">Sobre Nós</a></li>
             <li><a href="#VisiteNos">Visite-Nos</a></li>
             <li><a href="#faq">F.A.Q</a></li>
-            <li><a href="Principal/contribuir.html">Contribuir</a></li>
-            <li><a href="Principal/login.html">Olá, Usuário</a></li>
+            <li><a href="{{ url_for('contribuir') }}">Contribuir</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('login')}}">Olá, {{current_user.Nome}}</a></li>
+            {% else %}
+                <li><a href="{{ url_for('login')}}">Entre aqui</a></li>
+            {% endif %}
         </ul>
     </nav>
 
     <div id="login-usuario">
         <img class='logo-login' src='https://www.altoastral.com.br/media/uploads/legacy/2016/07/AAT001-P001-89335-1-m-Divulgacao_1.jpg' alt='Logo da Paróquia'></img>
-            <form>
+            <form method="post">
                 <div class="campos">
                     <label for="">Email: </label>
-                    <input id='email' type="email" placeholder="ex: meunome@email.com"></input>
+                    <input id='email' name="EmailLogin" type="email" placeholder="ex: meunome@email.com"></input>
                 </div>
                 <div class="campos">
                     <label for="">Senha: </label>
-                    <input type="password" placeholder="Minímo: 8 caracteres"></input>
+                    <input type="password" name="SenhaLogin" placeholder="Minímo: 8 caracteres"></input>
                 </div>
                 <button id='botao-login' type="submit">Login</button>
-                <button id='botao-cadastro' type="submit"><a href="cadastro.html">Não possuo cadastro</a></button>
+                <button id='botao-cadastro' type="submit"><a href="{{ url_for('cadastro') }}">Não possuo cadastro</a></button>
             </form>
         </div>
 
