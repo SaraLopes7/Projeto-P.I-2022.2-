@@ -66,24 +66,26 @@ def contribuir():
 def cartao():
     #if current_user[0]:
     #    Usuario = User(current_user[0][0], current_user[0][1], current_user[0][2], current_user[0][3], current_user[0][4], current_user[0][5])
-    if current_user[0]:
-        Usuario = User(current_user[0][0], current_user[0][1], current_user[0][2], current_user[0][3], current_user[0][4], current_user[0][5])
-        if request.method == "POST":
-            Numero = request.form["NumeroCartao"]
-            DataVencimento = request.form["DataValidade"]
-            CVV = request.form["CVV"]
-            NomeTitular = request.form["TitularCartao"]
-            ValorContribuicao = request.form["ValorContribuicao"]
-            SalvarCartao = request.form.get("SalvarCartao")
-            Cartao = CartaoDeCredito(Numero, CVV, DataVencimento, NomeTitular)
+    try:
+        if current_user[0]:
+            Usuario = User(current_user[0][0], current_user[0][1], current_user[0][2], current_user[0][3], current_user[0][4], current_user[0][5])
+            if request.method == "POST":
+                Numero = request.form["NumeroCartao"]
+                DataVencimento = request.form["DataValidade"]
+                CVV = request.form["CVV"]
+                NomeTitular = request.form["TitularCartao"]
+                ValorContribuicao = request.form["ValorContribuicao"]
+                SalvarCartao = request.form.get("SalvarCartao")
+                Cartao = CartaoDeCredito(Numero, CVV, DataVencimento, NomeTitular)
 
-            Usuario.realizarDoacao(ValorContribuicao, "Cartao")
+                Usuario.realizarDoacao(ValorContribuicao, "Cartao")
 
-            if SalvarCartao:
-                Cartao.salvarCartao()
-                Cartao.adicionarUsuarios_cartaodecredito(Usuario.CPF)
-            return f"Doação no valor de R${ValorContribuicao} feita!!"
-
+                if SalvarCartao:
+                    Cartao.salvarCartao()
+                    Cartao.adicionarUsuarios_cartaodecredito(Usuario.CPF)
+                return f"Doação no valor de R${ValorContribuicao} feita!!"
+    except:
+        return "Você precisa de uma conta para doar com cartão"
     return render_template("Pagamentos/cartao.html")
 
 @app.route("/pix")
