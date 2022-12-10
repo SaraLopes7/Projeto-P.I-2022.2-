@@ -27,6 +27,9 @@
         </ul>
     </nav>
     <br><br><br><br><br>
+    {% if not current_user[0] %}
+    <h3>Para doar por essa opção, você precisa criar uma conta.</h3>
+    {% else %}
     <h3>Informações do Cartão</h3>
     <div class='cartao'>
         <form method="post">
@@ -54,10 +57,8 @@
                 <label for="ValorContribuicao">Valor da sua contribuição: R$</label>
                 <input type="number" name="ValorContribuicao" value="1" min="1">
             </div>
-            <button id='botao-doar' type="submit">Doar</button>
-        </form>
+            <br>
         <h3>Endereço de Cobrança</h3>
-        <form>
             <div class="campos">
                 <label for="">CEP: </label>
                 <input class='inputEndereco1'  type="text" placeholder="XXXXX-XXX" required></input>
@@ -82,7 +83,9 @@
                 <label for="">Complemento: </label>
                 <input class='inputEndereco6' type="text" placeholder="ex: Apartamento 201"></input>
             </div>
+            <button id='botao-doar' type="submit">Doar</button>
         </form>
+        {% endif %}
         
     </div>
 
