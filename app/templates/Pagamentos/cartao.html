@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/Pagamentos/cartao.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/Footer/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/Principal/contribuir.css') }}">
     <title>Pagamento Cartão</title>
 </head>
 <body>
@@ -27,6 +28,16 @@
         </ul>
     </nav>
     <br><br><br><br><br>
+    {% if not current_user[0] %}
+    <script>alert("Para doar por essa opção, você precisa criar uma conta!")</script>
+    <div id="cadastro-usuario">
+        <img class='logo-doar' src='https://cdn-icons-png.flaticon.com/512/1692/1692181.png' alt='Icon de doação'></img>
+            <h3 id='escolha'>Escolha a Forma de Pagamento: </h3>
+            <button id='botao-cartao' type="button"><a href="{{ url_for('cartao') }}">Cartão de Crédito</a></button>
+            <button id='botao-pix' type="button"><a href="{{ url_for('pix') }}">Pix</a></button> 
+            <button id='botao-boleto' type="button"><a href="{{ url_for('boleto') }}">Boleto</a></button>
+    </div>
+    {% else %}
     <h3>Informações do Cartão</h3>
     <div class='cartao'>
         <form method="post">
@@ -54,10 +65,8 @@
                 <label for="ValorContribuicao">Valor da sua contribuição: R$</label>
                 <input type="number" name="ValorContribuicao" value="1" min="1">
             </div>
-            <button id='botao-doar' type="submit">Doar</button>
-        </form>
+            <br>
         <h3>Endereço de Cobrança</h3>
-        <form>
             <div class="campos">
                 <label for="">CEP: </label>
                 <input class='inputEndereco1'  type="text" placeholder="XXXXX-XXX" required></input>
@@ -82,7 +91,9 @@
                 <label for="">Complemento: </label>
                 <input class='inputEndereco6' type="text" placeholder="ex: Apartamento 201"></input>
             </div>
+            <button id='botao-doar' type="submit">Doar</button>
         </form>
+        {% endif %}
         
     </div>
 
