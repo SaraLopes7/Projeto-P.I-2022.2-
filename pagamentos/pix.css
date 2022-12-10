@@ -1,0 +1,39 @@
+#pagPix {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#logoPix {
+    width: 300px;
+    height: 250px;
+}
+
+
+#qrCode {
+    width: 200px;
+    height: 200px;
+}
+
+#linhaQR {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 20%;
+}
+
+#colunaPague {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+}
+
+#numero-chave {
+    background-color: #d8a366;
+    border: 0.5px solid black;
+    border-radius: 10px;
+    width: 180px;
+    height: 50px;
+    padding: 5%;
+    text-align: center;
+}
