@@ -18,12 +18,22 @@
             <li><a href="../index.html">Visite-Nos</a></li>
             <li><a href="../index.html">F.A.Q</a></li>
             <li><a href="#">Contribuir</a></li>
-            <li><a href="{{ url_for('login')}}">Olá, Usuário</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('login')}}">Olá, {{current_user[0][1]}}</a></li>
+            {% else %}
+                <li><a href="{{ url_for('login')}}">Entre aqui</a></li>
+            {% endif %}
         </ul>
     </nav>
 
     <div id="cadastro-usuario">
         <img class='logo-doar' src='https://cdn-icons-png.flaticon.com/512/1692/1692181.png' alt='Icon de doação'></img>
+        {% if current_user.is_authenticated %}
+            <h3 id='escolha'>Escolha a Forma de Pagamento: </h3>
+            <button id='botao-cartao' type="button"><a href="{{ url_for('cartao') }}">Cartão de Crédito</a></button>
+            <button id='botao-pix' type="button"><a href="{{ url_for('pix') }}">Pix</a></button> 
+            <button id='botao-boleto' type="button"><a href="{{ url_for('boleto') }}">Boleto</a></button>
+        {% else %}
         <form>
             <div class="campos">
                 <label for="">Nome Completo:</label>
@@ -46,10 +56,11 @@
                 <input class='inputs5' type="number" placeholder="Insira o Valor" required></input>
             </div>
             <h3 id='escolha'>Escolha a Forma de Pagamento: </h3>
-            <button id='botao-cartao' type="button"><a href="../pagamentos/cartao.html">Cartão de Crédito</a></button>
-            <button id='botao-pix' type="button"><a href="../pagamentos/pix.html">Pix</a></button> 
-            <button id='botao-boleto' type="button"><a href="../pagamentos/boleto.html">Boleto</a></button>
+            <button id='botao-cartao' type="button"><a href="{{ url_for('cartao') }}">Cartão de Crédito</a></button>
+            <button id='botao-pix' type="button"><a href="{{ url_for('pix') }}">Pix</a></button> 
+            <button id='botao-boleto' type="button"><a href="{{ url_for('boleto') }}">Boleto</a></button>
         </form>
+        {% endif %}
     </div>
 
     <footer class='footer'> <!-- Footer -->

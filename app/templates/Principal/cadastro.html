@@ -18,7 +18,11 @@
             <li><a href="">Visite-Nos</a></li>
             <li><a href="">F.A.Q</a></li>
             <li><a href="{{ url_for('contribuir') }}">Contribuir</a></li>
-            <li><a href="{{ url_for('login')}}">Olá, Usuário</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('login')}}">Olá, {{current_user[0][1]}}</a></li>
+            {% else %}
+                <li><a href="{{ url_for('login')}}">Entre aqui</a></li>
+            {% endif %}
         </ul>
     </nav>
 
