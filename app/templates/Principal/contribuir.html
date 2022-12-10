@@ -15,26 +15,28 @@
         <h2>Paróquia da Torre</h2>
         <ul>
             <li><a href="{{ url_for('index')}}">Sobre Nós</a></li>
-            <li><a href="../index.html">Visite-Nos</a></li>
-            <li><a href="../index.html">F.A.Q</a></li>
+            <li><a href="{{ url_for('index')}}">Visite-Nos</a></li>
+            <li><a href="{{ url_for('index')}}">F.A.Q</a></li>
             <li><a href="#">Contribuir</a></li>
-            {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('login')}}">Olá, {{current_user[0][1]}}</a></li>
+            
+            {% if current_user[0] %}
+            <li><a>Olá, {{current_user[0][1]}}</a></li>
+            <li><a href="{{ url_for('logout')}}">Sair</a></li>
             {% else %}
-                <li><a href="{{ url_for('login')}}">Entre aqui</a></li>
-            {% endif %}
+            <li><a href="{{ url_for('login')}}">Entre aqui</a></li>
+            {%endif%}
         </ul>
     </nav>
 
     <div id="cadastro-usuario">
         <img class='logo-doar' src='https://cdn-icons-png.flaticon.com/512/1692/1692181.png' alt='Icon de doação'></img>
-        {% if current_user.is_authenticated %}
+        {% if current_user[0] %}
             <h3 id='escolha'>Escolha a Forma de Pagamento: </h3>
             <button id='botao-cartao' type="button"><a href="{{ url_for('cartao') }}">Cartão de Crédito</a></button>
             <button id='botao-pix' type="button"><a href="{{ url_for('pix') }}">Pix</a></button> 
             <button id='botao-boleto' type="button"><a href="{{ url_for('boleto') }}">Boleto</a></button>
         {% else %}
-        <form>
+        <form method="post">
             <div class="campos">
                 <label for="">Nome Completo:</label>
                 <input class='input1'  type="text" placeholder="Nome Completo" required></input>

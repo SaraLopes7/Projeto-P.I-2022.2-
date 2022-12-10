@@ -30,33 +30,38 @@
         <img class='logo-cadastro'
             src='https://www.altoastral.com.br/media/uploads/legacy/2016/07/AAT001-P001-89335-1-m-Divulgacao_1.jpg'
             alt='Logo da Paróquia'></img>
-            <form>
+            <form method="post">
                 <div class="campos">
-                    <label for="" class="nomeLabel">Nome Completo: </label>
-                    <input class='input1'  type="text" placeholder="Nome Completo" required></input>
+                    <label for="Nome" class="nomeLabel">Nome: </label>
+                    <input class='input1' name="Nome"  type="text" placeholder="Nome" required></input>
                 </div>
                 <div class="campos">
-                    <label for="" class="nomeLabel">Email: </label>
-                    <input class='input2'  type="email" placeholder="ex: meunome@email.com" autocomplete="email" required></input>
+                    <label for="Sobrenome" class="nomeLabel">Sobrenome(s): </label>
+                    <input class='input1' name="Sobrenome" type="text" placeholder="Sobrenome(s)" required></input>
                 </div>
                 <div class="campos">
-                    <label for="" class="nomeLabel">CPF: </label>
-                    <input class='input3'  type="number" placeholder="XXX.XXX.XXX–XX" required></input>
+                    <label for="Email" class="nomeLabel">Email: </label>
+                    <input class='input2' name="Email" type="email" placeholder="ex: meunome@email.com" autocomplete="email" required></input>
                 </div>
                 <div class="campos">
-                    <label for="" class="nomeLabel">Telefone: </label>
-                    <input class='input4'  type="number" placeholder="(XX) XXXXX-XXXX"></input>
+                    <label for="CPF" class="nomeLabel">CPF: </label>
+                    <input class='input3' name="CPF" type="text" minlength="11"  maxlength="14"
+                    placeholder="XXX.XXX.XXX–XX" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required></input>
                 </div>
                 <div class="campos">
-                    <label for="" class="nomeLabel">Senha: </label>
-                    <input class='input5' type="password" placeholder="Minímo: 8 caracteres" required></input>
+                    <label for="Telefone" class="nomeLabel">Telefone: </label>
+                    <input class='input4' name="Telefone" type="tel" pattern="(\d{2}\)[0-9]{2}[9]{1}[0-9]{4}-[0-9]{4}" placeholder="(XX) XXXXX-XXXX"></input>
                 </div>
                 <div class="campos">
-                    <label for="" class="nomeLabel">Confirmar Senha: </label>
-                    <input type="password" placeholder="Minímo: 8 caracteres" required></input>
+                    <label for="Senha" class="nomeLabel">Senha: </label>
+                    <input class='input5' name="Senha" type="password" minlength="8" placeholder="Minímo: 8 caracteres" required></input>
+                </div>
+                <div class="campos">
+                    <label for="ConfirmacaoSenha" class="nomeLabel">Confirmar Senha: </label>
+                    <input type="password" name="ConfirmacaoSenha" minlength="8" placeholder="Minímo: 8 caracteres" required></input>
                 </div>
                 <div id="botoes">
-                    <button id='botao-login' type="button"><a href="login.html">Já possuo cadastro</a></button>
+                    <button id='botao-login' type="button"><a href="{{url_for('login')}}">Já possuo cadastro</a></button>
                     <button id='botao-cadastrar' type="submit">Cadastrar</button>
                 </div>
             </form>

@@ -18,33 +18,43 @@
             <li><a href="{{ url_for('index') }}">Visite-Nos</a></li>
             <li><a href="{{ url_for('index') }}">F.A.Q</a></li>
             <li><a href="{{ url_for('contribuir') }}">Contribuir</a></li>
-            {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('login')}}">Olá, {{current_user[0][1]}}</a></li>
+            {% if current_user[0] %}
+            <li><a>Olá, {{current_user[0][1]}}</a></li>
+            <li><a href="{{ url_for('logout')}}">Sair</a></li>
             {% else %}
-                <li><a href="{{ url_for('login')}}">Entre aqui</a></li>
-            {% endif %}
+            <li><a href="{{ url_for('login')}}">Entre aqui</a></li>
+            {%endif%}
         </ul>
     </nav>
     <br><br><br><br><br>
     <h3>Informações do Cartão</h3>
     <div class='cartao'>
-        <form>
+        <form method="post">
             <div class="campos">
-                <label for="">Número do Cartão: </label>
-                <input class='inputCartao1'  type="number" placeholder="XXXX XXXX XXXX XXXX" required></input>
+                <label for="NumeroCartao">Número do Cartão: </label>
+                <input class='inputCartao1' name="NumeroCartao"  type="text" placeholder="XXXX XXXX XXXX XXXX" required></input>
             </div>
             <div class="campos">
-                <label for="">Data de validade: </label>
-                <input class='inputCartao2'  type="text" placeholder="XX/XXXX" required></input>
+                <label for="DataValidade">Data de validade: </label>
+                <input class='inputCartao2' name="DataValidade" type="month" placeholder="Mês/Ano" required></input>
             </div>
             <div class="campos">
-                <label for="">CVV: </label>
-                <input class='inputCartao3'  type="number" placeholder="XXX" required></input>
+                <label for="CVV">CVV: </label>
+                <input class='inputCartao3' name="CVV"  type="number" placeholder="XXX" required></input>
             </div>
             <div class="campos">
-                <label for="">Nome no Cartão: </label>
-                <input class='inputCartao4'  type="text" placeholder="Ex: Felipe L Carvalho" required></input>
+                <label for="TitularCartao">Nome no Cartão: </label>
+                <input class='inputCartao4' name="TitularCartao"  type="text" placeholder="Ex: Felipe L Carvalho" required></input>
             </div>
+            <div class="campos">
+                <label for="SalvarCartao">Quero salvar meu cartão para doações futuras</label>
+                <input type="checkbox" name="SalvarCartao">
+            </div>
+            <div class="campos">
+                <label for="ValorContribuicao">Valor da sua contribuição: R$</label>
+                <input type="number" name="ValorContribuicao" value="1" min="1">
+            </div>
+            <button id='botao-doar' type="submit">Doar</button>
         </form>
         <h3>Endereço de Cobrança</h3>
         <form>
@@ -73,7 +83,7 @@
                 <input class='inputEndereco6' type="text" placeholder="ex: Apartamento 201"></input>
             </div>
         </form>
-        <button id='botao-doar' type="button">Doar</button>
+        
     </div>
 
     <footer class='footer'> <!-- Footer -->

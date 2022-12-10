@@ -18,11 +18,12 @@
             <li><a href="{{ url_for('index') }}">Visite-Nos</a></li>
             <li><a href="{{ url_for('index') }}">F.A.Q</a></li>
             <li><a href="{{ url_for('contribuir') }}">Contribuir</a></li>
-            {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('login')}}">Olá, {{current_user[0][1]}}</a></li>
+            {% if current_user[0] %}
+            <li><a>Olá, {{current_user[0][1]}}</a></li>
+            <li><a href="{{ url_for('logout')}}">Sair</a></li>
             {% else %}
-                <li><a href="{{ url_for('login')}}">Entre aqui</a></li>
-            {% endif %}
+            <li><a href="{{ url_for('login')}}">Entre aqui</a></li>
+            {%endif%}
         </ul>
     </nav>
 
