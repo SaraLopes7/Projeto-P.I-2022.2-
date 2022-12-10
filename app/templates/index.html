@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=chrome">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="Principal/body.css">
-    <link rel="stylesheet" href="Header/header.css">
-    <link rel="stylesheet" href="Footer/footer.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/Principal/body.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/Header/header.css') }}">  
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/Footer/footer.css') }}">
+    
     <title>Paróquia da Torre</title>
 </head>
 <body>
     <nav>
         <h2>Paróquia da Torre</h2>
         <ul>
-            <li><a href="#">Sobre Nós</a></li>
+            <li><a href="{{ url_for('index')}}">Sobre Nós</a></li>
             <li><a href="#VisiteNos">Visite-Nos</a></li>
             <li><a href="#faq">F.A.Q</a></li>
-            <li><a href="Principal/contribuir.html">Contribuir</a></li>
-            <li><a href="Principal/login.html">Olá, Usuário</a></li>
+            <li><a href="{{ url_for('contribuir') }}">Contribuir</a></li>
+            <li><a href="{{ url_for('login')}}">Olá, Usuário</a></li>
         </ul>
     </nav>
 
