@@ -85,7 +85,8 @@ def cartao():
                     Cartao.adicionarUsuarios_cartaodecredito(Usuario.CPF)
                 return f"Doação no valor de R${ValorContribuicao} feita!!"
     except:
-        return "Você precisa de uma conta para doar com cartão"
+        print("")
+        #return redirect(url_for('contribuir'))
     return render_template("Pagamentos/cartao.html")
 
 @app.route("/pix")
